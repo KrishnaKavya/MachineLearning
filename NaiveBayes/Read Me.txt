@@ -1,0 +1,14 @@
+Pre execution Steps:
+1. place the the bayesClassifier.r and input files(train-win.dat,test-win.dat) file in the currentWorking directory .
+ 	getwd()
+
+2. install.packages("plyr")
+   library(plyr)
+
+3. source("BayesClassifier.R")
+
+4. Question1: bayes("train.csv","test.csv")
+   
+   output: 
+   P(Class=0)=0.7225 P( wesley = 0 | 0 ) = 0.706 P( romulan = 0 | 0 ) = 0.699 P( poetry = 0 | 0 ) = 0.697 P( honor = 0 | 0 ) = 0.668 P( tea = 0 | 0 ) = 0.687 P( barclay = 0 | 0 ) = 0.721
+   P(Class=1)=0.2775P( wesley = 1 | 1 ) =  1.725P( romulan = 1 | 1 ) =  1.725P( poetry = 1 | 1 ) =  1.725P( honor = 1 | 1 ) =  1.725P( tea = 1 | 1 ) =  1.725P( barclay = 1 | 1 ) =  1.725
