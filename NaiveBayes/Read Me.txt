@@ -3,7 +3,9 @@ Pre execution Steps:
  	getwd()
 
 2. install.packages("plyr")
+   install.packages("e1071")
    library(plyr)
+   library(e1071)
 
 3. source("BayesClassifier.R")
 
@@ -12,3 +14,45 @@ Pre execution Steps:
    output: 
    P(Class=0)=0.7225 P( wesley = 0 | 0 ) = 0.706 P( romulan = 0 | 0 ) = 0.699 P( poetry = 0 | 0 ) = 0.697 P( honor = 0 | 0 ) = 0.668 P( tea = 0 | 0 ) = 0.687 P( barclay = 0 | 0 ) = 0.721
    P(Class=1)=0.2775P( wesley = 1 | 1 ) =  1.725P( romulan = 1 | 1 ) =  1.725P( poetry = 1 | 1 ) =  1.725P( honor = 1 | 1 ) =  1.725P( tea = 1 | 1 ) =  1.725P( barclay = 1 | 1 ) =  1.725
+
+  
+  for(col in colnames(trainData[,-7])){
+    frequency<-count(trainData, col)
+    classone=frequency[1,1]
+    classonefreq=sum(trainData[,col]==0 &)
+    pone=round(classonefreq/class0, digits = 3)
+    cat(paste(' P(',col,'=',classone,'|',0,') =',pone))
+    
+  }
+  cat('\n')
+  cat(' P(Class=1)',class1/NumberOfInstances, sep='=')
+  
+  for(col in colnames(trainData[,-7])){
+    classtwo=frequency[2,1]
+    classtwofreq=frequency[2,2]
+    ptwo=round(classtwofreq/class1, digits = 3)
+    cat(paste('P(',col,'=',classtwo,'|',1,') = ',ptwo))
+  }
+
+
+
+
+    
+  #Probability of Class 0 is the number of Instances of class 0 / number of instances.
+  cat('P(Class=0)',class0/NumberOfInstances, sep='=')
+  paste(sum(trainData$wesley==0))
+  
+  #Computing the Conditional Probability for class 0.
+  #for all the columns except the class. we calculate the frequency of every attribute. 
+  # we calculate conditional probability of value=0/class=0 and value=1/class=0.
+
+  
+  Cv0=sum(trainData$wesley==0 & trainData$class==0)/sum(trainData$class==0)
+  
+  
+  for(col in colnames(trainData[,7])){
+    Cv0=sum(trainData$col==0 & trainData$class==0)/sum(trainData$class==0)
+    Cv1=sum(trainData$col==1 & trainData$class==0)/sum(trainData$class==0)
+    print(paste(' P(',col,"=0|0)= ",Cv0 ))
+    print(paste(' P(',col,"=1|0)= ",Cv0 ))
+  }
